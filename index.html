@@ -63,13 +63,16 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     const bornIn1500s = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
-    console.log('All inventors:', inventors);
-    console.log('Inventors born in the 1500s:', bornIn1500s);
+    console.log('All inventors:');
+    console.table(inventors);
+    console.log('Inventors born in the 1500s:');
+    console.table(bornIn1500s);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
     const inventorNames = inventors.map(inventor => `${inventor.last}, ${inventor.first}`);
-    console.log('Inventors names (last, first):', inventorNames);
+    console.log('Inventors names (last, first):');
+    console.table(inventorNames);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
@@ -78,12 +81,14 @@
       if (a.year > b.year) return 1;
       if (a.year === b.year) return 0
     });
-    console.log('Inventors sorted by birthdate (oldest -> youngest:', inventorsSortedByBirthdate);
+    console.log('Inventors sorted by birthdate (oldest -> youngest:');
+    console.table(inventorsSortedByBirthdate);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    const totalYearsInventorsLived = inventors.reduce((acc, cur) => acc += cur.passed - cur.year, 0);
-    console.log('Total years inventors lived:', totalYearsInventorsLived);
+    const totalYearsInventorsLived = inventors.reduce((acc, cur) => acc + cur.passed - cur.year, 0);
+    console.log('Total years inventors lived:');
+    console.table(totalYearsInventorsLived);
 
     // 5. Sort the inventors by years lived (longest lived first)
     const inventorsSortedByYearsLived = inventors.sort((a, b) => {
@@ -93,13 +98,15 @@
       if (ageA < ageB) return 1;
       if (ageA === ageB) return 0;
     });
-    console.log('Inventors sorted by years lived (oldest first):', inventorsSortedByYearsLived);
+    console.log('Inventors sorted by years lived (oldest first):');
+    console.table(inventorsSortedByYearsLived);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
     const boulevards = Array.from(document.querySelectorAll('.mw-category-group a'));
     const boulevardsWithDeInName = boulevards.map(b => b.title).filter(b => b.includes('de'));
-    console.log('Boulevards with "de" in name:', boulevardsWithDeInName);
+    console.log('Boulevards with "de" in name:');
+    console.table(boulevardsWithDeInName);
 
 
     // 7. sort Exercise
@@ -109,9 +116,10 @@
       const lastB = b.split(', ')[0];
       if (lastA < lastB) return -1;
       if (lastA > lastB) return 1;
-      if (lastA == lastB) return 0;
+      if (lastA === lastB) return 0;
     });
-    console.log('People sorted by last name:', peopleSortedByLastName);
+    console.log('People sorted by last name:');
+    console.table(peopleSortedByLastName);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
@@ -120,7 +128,8 @@
       acc[cur] = acc[cur] ? ++acc[cur] : 1;
       return acc;
     }, {});
-    console.log('Summed instances of data:', summedInstances);
+    console.log('Summed instances of data:');
+    console.table(summedInstances);
 
   </script>
 </body>
